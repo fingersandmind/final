@@ -33,4 +33,14 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
     
     Route::get('logout', 'SessionsController@destroy');
+
+
+
+
+
+
+
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('products','ProductController');
 });

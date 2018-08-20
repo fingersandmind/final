@@ -35,6 +35,12 @@
                 <ul id="sidebarnav">
                     <li class="active"> <a class="waves-effect waves-dark" href="{{url('home')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                     </li>
+                    @can('role-list')
+                    <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Manage Teachers</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu">Manage Role</span></a>
+                    </li>
+                    @endcan
                     <li> <a class="waves-effect waves-dark" href="{{url('profile')}}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                     </li>
                     <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
@@ -71,7 +77,7 @@
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Dashboard</h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
@@ -326,7 +332,7 @@
     <!--Menu sidebar -->
     <script src="{{asset('js/js/sidebarmenu.js')}}"></script>
     <!--Custom JavaScript -->
-    <script src="{{asset('js/template_js/custom.min.js')}}"></script>
+    <script src="{{asset('js/js/custom.min.js')}}"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->

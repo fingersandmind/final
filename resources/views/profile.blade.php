@@ -33,6 +33,12 @@
                 <ul id="sidebarnav">
                     <li> <a class="waves-effect waves-dark" href="{{url('home')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                     </li>
+                    @can('role-list')
+                    <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Manage Teachers</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu">Manage Role</span></a>
+                    </li>
+                    @endcan
                     <li class="active"> <a class="waves-effect waves-dark" href="{{url('profile')}}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                     </li>
                     <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
