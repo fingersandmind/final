@@ -1,6 +1,6 @@
 <nav class="navbar top-navbar navbar-expand-md navbar-light">
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{route('home')}}">
             <b>
                 <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
                 <img src="{{asset('assets/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
@@ -29,11 +29,11 @@
             <li class="nav-item dropdown u-pro">
                 @if(Auth::check())
                 <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{asset("storage/avatars/".$user->avatar)}}" alt="user" class="" /> 
+                    <img src="{{asset("storage/avatars/".auth()->user()->avatar)}}" alt="user" class="" /> 
                     <span class="hidden-md-down">{{auth()->user()->name}}&nbsp;</span> </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                        <a class="dropdown-item" href="{{route('profile')}}"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                        <a class="dropdown-item" href="{{route('profile')}}"><i class="ti-user m-r-5 m-l-5"></i>Profile</a>
+                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>Class</a>
                         <a class="dropdown-item" href="{{route('logout')}}"><i class="ti-email m-r-5 m-l-5"></i> Logout</a>
                     </div>
                 @endif

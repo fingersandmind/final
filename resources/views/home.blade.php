@@ -73,6 +73,15 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Dashboard</h3>
@@ -213,11 +222,10 @@
                     <div class="card">
                         <div class="up-img" style="background-image:url({{asset('assets/images/big/img1.jpg')}})"></div>
                         <div class="card-body">
-                            <h5 class=" card-title">Business development of rules</h5>
-                            <span class="label label-info label-rounded">Technology</span>
-                            <p class="m-b-0 m-t-20">Titudin venenatis ipsum aciat. Vestibu ullamer quam. nenatis ipsum ac feugiat. Ibulum ullamcorper.</p>
+                            <h5 class=" card-title">Verse of the day</h5>
+                            <script src="http://www.verse-a-day.com/js/NIV.js"></script>
                             <div class="d-flex m-t-20">
-                                <a class="link" href="javascript:void(0)">Read more</a>
+                                <a class="link" href="https://www.biblestudytools.com/bible-verse-of-the-day/" target="_blank">Read more</a>
                                 <div class="ml-auto align-self-center">
                                     <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart-o"></i></a>
                                     <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-share-alt"></i></a>
