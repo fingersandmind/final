@@ -21,9 +21,10 @@ class SessionsController extends Controller
     public function store(){
         
         if(! auth()->attempt(request(['email', 'password']))) {
-            return back();
+            return back()->withErrors('Email or Password not found or unmatched');
         }
-        return redirect('home');
+       // session()->flash('Welcome Back', 'I see');
+        return redirect('home')->with('status', 'Welcome back'. ' '. auth()->user()->name );
 
     }
 

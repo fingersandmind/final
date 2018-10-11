@@ -33,4 +33,14 @@ class ProfileController extends Controller
             ->with('success','You have successfully upload image.');
  
     }
+    public function updateProfile(Request $request){
+
+        $user = auth()->user();
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
+        return back()
+            ->with('success', 'You have successfully updated your profile');
+    }
 }

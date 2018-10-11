@@ -14,10 +14,11 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
             
-            <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+            {{-- <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
                 <form class="app-search">
                     <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
-            </li>
+            </li> --}}
+            
         </ul>
         <!-- ============================================================== -->
         <!-- User profile and search -->
@@ -33,7 +34,7 @@
                     <span class="hidden-md-down">{{auth()->user()->name}}&nbsp;</span> </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
                         <a class="dropdown-item" href="{{route('profile')}}"><i class="ti-user m-r-5 m-l-5"></i>Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>Class</a>
+                        <a class="dropdown-item" href="{{route('class.index')}}"><i class="ti-wallet m-r-5 m-l-5"></i>Class</a>
                         <a class="dropdown-item" href="{{route('logout')}}"><i class="ti-email m-r-5 m-l-5"></i> Logout</a>
                     </div>
                 @endif

@@ -30,16 +30,22 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('profile','ProfileController@profile')->name('profile');
     Route::post('profile', 'ProfileController@updateAvatar');
+    // Route::post('profile', 'ProfileController@updateProfile');
 
     
     Route::get('logout', 'SessionsController@destroy');
 
 
 
-
-
-
-
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::post('users/delete','UserController@delete')->name('users.delete');
+
+    Route::resource('class','ClassController');
+
+    Route::get('profile/schedule', function(){
+        return view('schedules.index');
+    });
+
+    // Route::get('class',' ClassController@index');
 });

@@ -4,23 +4,15 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Favicon icon -->
+    
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
     <title>AdminWrap - Easy to Customize Bootstrap 4 Admin Template</title>
-    <!-- Bootstrap Core CSS -->
     <link href="{{asset('assets/node_modules/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
     <link href="{{asset('css/css/colors/default.css')}}" id="theme" rel="stylesheet">
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 
 @endsection
 
@@ -41,7 +33,7 @@
                     @endcan
                     <li class="active"> <a class="waves-effect waves-dark" href="{{url('profile')}}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
                     </li>
-                    <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
+                    <li> <a class="waves-effect waves-dark" href="{{ route('class.index') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Classes</span></a>
                     </li>
                     <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Icons</span></a>
                     </li>
@@ -79,6 +71,9 @@
                         <li class="breadcrumb-item active">Profile</li>
                     </ol>
                 </div>
+                <div class="col-md-5 align-self-center">
+                    <a href="{{route('profile')}}/schedule" class="btn btn-primary pull-right">My Class</a>
+                </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -94,7 +89,7 @@
                         <div class="card-body">
                             <center class="m-t-30"> <img src="{{asset("storage/avatars/".$user->avatar)}}" class="img-circle" width="150" />
                                 <h4 class="card-title m-t-10">{{Auth::user()->name}}</h4>
-                                <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                                <h6 class="card-subtitle">Accounts Manager Amix corp</h6>
                                 <div class="row text-center justify-content-md-center">
                                     <div class="col-4"><a href="javascript:void(0)" class="link">
                                         <i class="icon-people"></i> <font class="font-medium">254</font></a></div>
@@ -143,29 +138,29 @@
                     <div class="card">
                         <!-- Tab panes -->
                         <div class="card-body">
-                            <form class="form-horizontal form-material">
+                            <form class="form-horizontal form-material" action="profile" method="post">
                                 <div class="form-group">
                                     <label class="col-md-12">Full Name</label>
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{auth()->user()->name}}" class="form-control form-control-line">
+                                        {{auth()->user()->name}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-email" class="col-md-12">Email</label>
                                     <div class="col-md-12">
-                                        <input type="email" placeholder="{{auth()->user()->email}}" class="form-control form-control-line" name="example-email" id="example-email">
+                                        <input type="email" name="email" id="email" placeholder="{{auth()->user()->email}}" class="form-control form-control-line" name="example-email" id="example-email">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="col-md-12">Password</label>
                                     <div class="col-md-12">
-                                        <input type="password" value="password" class="form-control form-control-line">
+                                        <input name="password" id="password" type="password" value="password" class="form-control form-control-line">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label class="col-md-12">Phone No</label>
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
+                                        <input type="text" type="phone" name="phone" placeholder="123 456 7890" class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -174,7 +169,7 @@
                                         <textarea rows="5" class="form-control form-control-line"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="col-sm-12">Select Country</label>
                                     <div class="col-sm-12">
                                         <select class="form-control form-control-line">
@@ -185,7 +180,7 @@
                                             <option>Thailand</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <a href="profile" class="btn btn-success">Update Profile</a>

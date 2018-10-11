@@ -20,6 +20,15 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
                     </div>
                 </div>
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             </div>
             <div class="form-actions">
                 <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>

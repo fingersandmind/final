@@ -36,4 +36,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticated( Request $request ) {
+        return 'a';
+        return redirect()->intended($this->redirectPath())->with('status','success');
+    }
 }

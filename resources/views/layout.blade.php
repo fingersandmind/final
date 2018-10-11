@@ -4,9 +4,7 @@
 <head>
     
     @yield('head')
-    <link href="{{asset('css/css/spinners.css')}}" rel="stylesheet">
-    <link href="{{asset('css/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('css/scss/icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    @include('css')
 
 </head>
 
@@ -22,7 +20,9 @@
         
     </div>
 
-    @yield('script')
+    @include('javascripts')
+
+   
 
 </body>
 

@@ -7,64 +7,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-<title>AdminWrap - Easy to Customize Bootstrap 4 Admin Template</title>
-<link href="{{asset('assets/node_modules/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{asset('assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
-<link href="{{asset('assets/node_modules/morrisjs/morris.css" rel="stylesheet')}}">
-<link href="{{asset('assets/node_modules/c3-master/c3.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/css/style.css')}}" rel="stylesheet">
-<link href="{{asset('css/css/spinners.css')}}" rel="stylesheet">
-<link href="{{asset('css/css/animate.css')}}" rel="stylesheet">
-<link href="{{asset('css/scss/icons/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/css/pages/dashboard1.css')}}" rel="stylesheet">
-<link href="{{asset('css/css/colors/default.css')}}" id="theme" rel="stylesheet">
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
 
 @endsection
 
 @section('content')
-    <aside class="left-sidebar">
-        <!-- Sidebar scroll-->
-        <div class="scroll-sidebar">
-            <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <li class="active"> <a class="waves-effect waves-dark" href="{{url('home')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
-                    </li>
-                    @can('role-list')
-                    <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Manage Teachers</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu">Manage Role</span></a>
-                    </li>
-                    @endcan
-                    <li> <a class="waves-effect waves-dark" href="{{url('profile')}}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Icons</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Map</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Blank</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- End Sidebar navigation -->
-        </div>
-        <!-- End Sidebar scroll-->
-    </aside>
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
+
+
+    @include('layouts.sidebar')
+
+    
     <div class="page-wrapper">
         <!-- ============================================================== -->
         <!-- Container fluid  -->
@@ -104,7 +56,7 @@
                         <div class="card-body">
                             <div class="d-flex no-block">
                                 <div>
-                                    <h5 class="card-title m-b-0">Sales Chart</h5>
+                                    <h5 class="card-title m-b-0">Schedule Calendar</h5>
                                 </div>
                                 <div class="ml-auto">
                                     <ul class="list-inline text-center font-12">
@@ -123,7 +75,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex m-b-30 no-block">
-                                <h5 class="card-title m-b-0 align-self-center">Our Visitors</h5>
+                                <h5 class="card-title m-b-0 align-self-center">Performance</h5>
                                 <div class="ml-auto">
                                     <select class="custom-select b-0">
                                         <option selected="">Today</option>
@@ -133,9 +85,9 @@
                             </div>
                             <div id="visitor" style="height:260px; width:100%;"></div>
                             <ul class="list-inline m-t-30 text-center font-12">
-                                <li><i class="fa fa-circle text-purple"></i> Tablet</li>
-                                <li><i class="fa fa-circle text-success"></i> Desktops</li>
-                                <li><i class="fa fa-circle text-info"></i> Mobile</li>
+                                <li><i class="fa fa-circle text-purple"></i> Present</li>
+                                <li><i class="fa fa-circle text-success"></i> Absents</li>
+                                <li><i class="fa fa-circle text-info"></i> Late</li>
                             </ul>
                         </div>
                     </div>
@@ -154,7 +106,7 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div>
-                                    <h5 class="card-title">Projects of the Month</h5>
+                                    <h5 class="card-title">Diri na ang Chart</h5>
                                 </div>
                                 <div class="ml-auto">
                                     <select class="custom-select b-0">
@@ -241,7 +193,6 @@
             <!-- ============================================================== -->
             <!-- Notification And Feeds -->
             <!-- ============================================================== -->
-            <div class="row">
                 <!-- Start Notification -->
                 <div class="col-lg-6 col-md-12">
                     <div class="card card-body mailbox">
@@ -327,30 +278,12 @@
     <!-- End Page wrapper  -->
 @endsection
 
-@section ('script')
+@push ('additionalJS')
 
-    <script src="{{asset('assets/node_modules/jquery/jquery.min.js')}}"></script>
-    <!-- Bootstrap popper Core JavaScript -->
-    <script src="{{asset('assets/node_modules/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/node_modules/bootstrap/js/bootstrap.min.js')}}"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{asset('js/js/perfect-scrollbar.jquery.min.js')}}"></script>
-    <!--Wave Effects -->
-    <script src="{{asset('js/js/waves.js')}}"></script>
-    <!--Menu sidebar -->
-    <script src="{{asset('js/js/sidebarmenu.js')}}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{asset('js/js/custom.min.js')}}"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!--morris JavaScript -->
-    <script src="{{asset('assets/node_modules/raphael/raphael-min.js')}}"></script>
-    <script src="{{asset('assets/node_modules/morrisjs/morris.min.js')}}"></script>
-    <!--c3 JavaScript -->
-    <script src="{{asset('assets/node_modules/d3/d3.min.js')}}"></script>
-    <script src="{{asset('assets/node_modules/c3-master/c3.min.js')}}"></script>
-    <!-- Chart JS -->
-    <script src="{{asset('js/js/dashboard1.js')}}"></script>
+    @if (session('status'))
+        <script>
+        swal("Welcome","{{session('status') }}",'success')
+        </script>
+    @endif
 
-@endsection
+@endpush
