@@ -25,6 +25,8 @@ Auth::routes();
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store');
 
+Route::get('attendance', 'ChartDataController@attendanceData');
+
 
 Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('home', 'HomeController@index')->name('home');

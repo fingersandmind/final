@@ -51,27 +51,29 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- Column -->
-                <div class="col-lg-8">
+                <div class="col lg-18">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block">
                                 <div>
-                                    <h5 class="card-title m-b-0">Schedule Calendar</h5>
+                                    <h5 class="card-title m-b-0">Teacher Performance</h5>
                                 </div>
                                 <div class="ml-auto">
                                     <ul class="list-inline text-center font-12">
-                                        <li><i class="fa fa-circle text-success"></i> SITE A</li>
-                                        <li><i class="fa fa-circle text-info"></i> SITE B</li>
-                                        <li><i class="fa fa-circle text-primary"></i> SITE C</li>
+                                        <li><i class="fa fa-circle text-success"></i>Late</li>
+                                        <li><i class="fa fa-circle text-info"></i>Absent</li>
+                                        <li><i class="fa fa-circle text-primary"></i>Present</li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="" id="sales-chart" style="height: 355px;"></div>
+                            {{-- <div class="" id="sales-chart" style="height: 355px;"></div> --}}
+                            <canvas id="subjectChart" width="100%" height="30"></canvas>
+                        </div>
                         </div>
                     </div>
                 </div>
                 <!-- Column -->
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex m-b-30 no-block">
@@ -91,7 +93,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- ============================================================== -->
             <!-- End Sales Chart -->
@@ -285,5 +287,9 @@
         swal("Welcome","{{session('status') }}",'success')
         </script>
     @endif
+
+    <script src="{{asset('vendor/Chart.min.js')}}"></script>
+    <script src="{{asset('vendor/subjectsChart.js')}}"></script>
+    
 
 @endpush
