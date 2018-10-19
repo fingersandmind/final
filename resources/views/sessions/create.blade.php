@@ -9,7 +9,7 @@
                 <div class="controls">
                     <div class="main_input_box">
                         {{-- <span class="add-on bg_lg"><i class="icon-user"> </i></span> --}}
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required/>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email Address Or Username" required/>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         
             <div class="form-actions">
                 <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-                <span class="pull-right"><a class="btn btn-info"/>Recover</a></span>
+                <span class="pull-right"><a class="btn btn-info">Recover</a></span>
             </div>
         </form>
     </div>

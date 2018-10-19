@@ -51,7 +51,7 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- Column -->
-                <div class="col lg-18">
+                <div class="col lg-15">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block">
@@ -60,14 +60,14 @@
                                 </div>
                                 <div class="ml-auto">
                                     <ul class="list-inline text-center font-12">
-                                        <li><i class="fa fa-circle text-success"></i>Late</li>
-                                        <li><i class="fa fa-circle text-info"></i>Absent</li>
-                                        <li><i class="fa fa-circle text-primary"></i>Present</li>
+                                        <li><i class="fa fa-circle text-danger"></i>Absent</li>
+                                        <li><i class="fa fa-circle text-primary"></i>Absent</li>
+                                        <li><i class="fa fa-circle text-success"></i>Present</li>
                                     </ul>
                                 </div>
                             </div>
                             {{-- <div class="" id="sales-chart" style="height: 355px;"></div> --}}
-                            <canvas id="subjectChart" width="100%" height="30"></canvas>
+                            <canvas id="subjectChart" width="50%" height="20"></canvas>
                         </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
             <!-- ============================================================== -->
             <!-- Projects of the Month -->
             <!-- ============================================================== -->
-            <div class="row">
+            {{-- <div class="row">
                 <!-- Column -->
                 <div class="col-lg-8">
                     <div class="card">
@@ -277,7 +277,7 @@
         <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
+    <!-- End Page wrapper  --> --}}
 @endsection
 
 @push ('additionalJS')
@@ -289,7 +289,109 @@
     @endif
 
     <script src="{{asset('vendor/Chart.min.js')}}"></script>
-    <script src="{{asset('vendor/subjectsChart.js')}}"></script>
+    {{-- <script src="{{asset('vendor/subjectsChart.js')}}"></script> --}}
+
+    <script>
+    ( function ( $ ) {
+
+var charts = {
+    init: function () {
+        // -- Set new default font family and font color to mimic Bootstrap's default styling
+        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#292b2c';
+
+         this.ajaxGetPostMonthlyData();
+        // $.ajax({
+        //     url: "{{route('loadChart')}}",
+        //     type: 'get',
+        //     dataType: 'json',
+           
+        // })
+        // .done(function(data) {
+            
+        //     charts.createCompletedJobsChart();
+        // })
+        // .fail(function() {
+        //     console.log("error");
+        // })
+        // .always(function() {
+        //     console.log("complete");
+        // });
+
+        // charts.createCompletedJobsChart();
+
+    },
+
+    ajaxGetPostMonthlyData: function () {
+        var urlPath =  'http://localhost/capstonefinal/public/months';
+        var request = $.ajax( {
+            method: 'GET',
+            url: urlPath
+        } );
+
+        request.done( function ( response ) {
+            console.log( response );
+            charts.createCompletedJobsChart( response );
+        });
+    },
+
+
+    /**
+     * Created the Completed Jobs Chart
+     */
+    createCompletedJobsChart: function ( response ) { 
+
+        var ctx = document.getElementById("subjectChart");
+        var subjects = response.subjects
+        var lates = {
+            label: 'Lates',
+            data: response.lates, //data of each subj represents late
+            backgroundColor: 'rgb(255, 69, 0)',
+            borderWidth: 0, 
+        }
+        var absent = {
+            label: 'Absent',
+            data: response.absents,
+            backgroundColor: 'rgb(255, 0, 0)',
+            borderWidth: 0,
+        }
+
+        var weekData = {
+            labels: subjects, //week days
+            datasets: [lates, absent] //must be an object of subjects with late, absent or present as its data
+        };
+
+        var chartOptions = {
+            scales: {
+              xAxes: [{
+                barPercentage: 1,
+                categoryPercentage: 0.6
+              }],
+              yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    max: response.max,
+                    maxTicksLimit: 5
+                },
+                gridLines: {
+                    color: "rgba(0, 0, 0, .125)",
+                }
+              }]
+            }
+        };
+
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: weekData,
+            options: chartOptions
+        });
+    }
+};
+
+charts.init();
+
+} )( jQuery );
+    </script>
     
 
 @endpush

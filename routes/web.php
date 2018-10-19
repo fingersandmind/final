@@ -25,7 +25,15 @@ Auth::routes();
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store');
 
-Route::get('attendance', 'ChartDataController@attendanceData');
+Route::get('attendance', 'ChartDataController@subjectData');
+Route::get('loadchart', 'ChartDataController@loadChart')->name('loadChart');
+
+
+
+Route::get('subject', 'ChartDataController@getAllSubject');
+Route::get('months', 'ChartDataController@getAllAttendanceMonth');
+
+
 
 
 Route::group(['middleware' => ['web', 'auth']], function(){

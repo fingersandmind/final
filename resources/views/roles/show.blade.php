@@ -30,7 +30,8 @@
                 @endforeach
             @endif
         </div>
-        <div class="pull-right">
+        <br><br><br><hr>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             @can('role-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
                 {!! Form::hidden('id', $role->id) !!}

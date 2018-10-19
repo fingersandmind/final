@@ -10,9 +10,11 @@ class Classes extends Model
 
     
 
-    public function teacher(){
+    public function users(){
         
-        return $this->belongsToMany(User::class, 'teacher_class')->withTimestamps();
+        return $this->belongsToMany(User::class, 'teacher_class', 'classes_id', 'user_id');
 
     }
+
+    
 }

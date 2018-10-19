@@ -43,7 +43,7 @@
             @if (Route::has('login'))
             @auth
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}">Home</a>
+              <a class="nav-link js-scroll-trigger" href="{{ route('home') }}">Home</a>
             </li>
             @else
             <li class="nav-item">
@@ -88,7 +88,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 mx-auto">
-            <h2 class="section-heading">Discover what all the buzz is about!</h2>
+            <h2 class="section-heading">Teacher Attendance made easier</h2>
             <p>Our app is available on any mobile device! Download now to get started!</p>
             <div class="badges">
               <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
@@ -102,7 +102,7 @@
     <section class="features" id="features">
       <div class="container">
         <div class="section-heading text-center">
-          <h2>Unlimited Features, Unlimited Fun</h2>
+          <h2>Sign In and Attendance is just a tap away!</h2>
           <p class="text-muted">Check out what you can do with this app theme!</p>
           <hr>
         </div>

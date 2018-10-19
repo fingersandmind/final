@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'username', 'password',
     ];
 
     /**
@@ -30,9 +30,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function classes(){
+    public function subjects()
+    {
+        return $this->belongsToMany(Classes::class, 'teacher_class', 'user_id', 'classes_id');
+    }
 
-        return $this->belongsToMany(Classes::class, 'teacher_class')->withTimestamps();
-
+    public function teacherClass()
+    {
+        return $this->hasMany(TeacherClass::class, 'user_id');
     }
 }
