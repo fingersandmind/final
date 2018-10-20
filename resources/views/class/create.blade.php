@@ -56,8 +56,14 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Time:</strong>
-            {!! Form::text('time',null , array('placeholder' => 'Time','class' => 'form-control')) !!}
+            <strong>Schedule:</strong>
+            {!! Form::text('schedule',null , array('placeholder' => 'Time','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Time Start:</strong>
+            {!! Form::text('time_start',null , array('placeholder' => 'Time','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

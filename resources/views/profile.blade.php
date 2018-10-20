@@ -17,38 +17,7 @@
 @endsection
 
 @section('content')
-    <aside class="left-sidebar">
-        <!-- Sidebar scroll-->
-        <div class="scroll-sidebar">
-            <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <li> <a class="waves-effect waves-dark" href="{{url('home')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
-                    </li>
-                    @can('role-list')
-                    <li> <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Manage Teachers</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false"><i class="fa fa-star"></i><span class="hide-menu">Manage Role</span></a>
-                    </li>
-                    @endcan
-                    <li class="active"> <a class="waves-effect waves-dark" href="{{url('profile')}}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="{{ route('class.index') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Classes</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Icons</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Map</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Blank</span></a>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- End Sidebar navigation -->
-        </div>
-        <!-- End Sidebar scroll-->
-    </aside>
+    @include('layouts.sidebar')
     <!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
@@ -70,9 +39,6 @@
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item active">Profile</li>
                     </ol>
-                </div>
-                <div class="col-md-5 align-self-center">
-                    <a href="{{route('profile')}}/schedule" class="btn btn-primary pull-right">My Class</a>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -97,8 +63,8 @@
                                         <i class="icon-picture"></i> <font class="font-medium">54</font></a></div>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <form action="profile" method="post" enctype="multipart/form-data">
-                                        @csrf
+                                    <form action="update-avatar" method="post" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
                                         <div class="form-group">
                                             <input type="file" class="form-control-file" name="avatar" id="avatarFile" aria-describedby="fileHelp">
                                             <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
@@ -106,26 +72,26 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                     <div class="row">
-                                            @if ($message = Session::get('success'))
-                                    
-                                                <div class="alert alert-success alert-block">
-                                    
-                                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    
-                                                    <strong>{{ $message }}</strong>
-                                                </div>
-                                            @endif
-                                    
-                                            @if (count($errors) > 0)
-                                                <div class="alert alert-danger">
-                                                    {{-- <strong>Whoops!</strong> There were some problems with your input.<br><br> --}}
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
+                                        @if ($message = Session::get('success'))
+                                
+                                            <div class="alert alert-success alert-block">
+                                
+                                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @endif
+                                
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                {{-- <strong>Whoops!</strong> There were some problems with your input.<br><br> --}}
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         </div>
                                     </div>
                             </center>
@@ -142,49 +108,40 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Full Name</label>
                                     <div class="col-md-12">
-                                        {{auth()->user()->name}}
+                                        <h3>{{auth()->user()->name}}</h3>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-email" class="col-md-12">Email</label>
                                     <div class="col-md-12">
-                                        <input type="email" name="email" id="email" placeholder="{{auth()->user()->email}}" class="form-control form-control-line" name="example-email" id="example-email">
-                                    </div>
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label class="col-md-12">Password</label>
-                                    <div class="col-md-12">
-                                        <input name="password" id="password" type="password" value="password" class="form-control form-control-line">
-                                    </div>
-                                </div> --}}
-                                <div class="form-group">
-                                    <label class="col-md-12">Phone No</label>
-                                    <div class="col-md-12">
-                                        <input type="text" type="phone" name="phone" placeholder="123 456 7890" class="form-control form-control-line">
+                                        <h3>{{auth()->user()->email}}</h3>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Message</label>
+                                    <label class="col-md-12">Username</label>
                                     <div class="col-md-12">
-                                        <textarea rows="5" class="form-control form-control-line"></textarea>
+                                        <h3>{{auth()->user()->username}}</h3>
                                     </div>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label class="col-sm-12">Select Country</label>
-                                    <div class="col-sm-12">
-                                        <select class="form-control form-control-line">
-                                            <option>London</option>
-                                            <option>India</option>
-                                            <option>Usa</option>
-                                            <option>Canada</option>
-                                            <option>Thailand</option>
-                                        </select>
+                                <div class="form-group">
+                                        <label class="col-md-12">Phone</label>
+                                        <div class="col-md-12">
+                                            <h3>{{auth()->user()->contact}}</h3>
+                                        </div>
                                     </div>
-                                </div> --}}
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <a href="profile" class="btn btn-success">Update Profile</a>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-success btn-rounded mb-4" 
+                                            data-id="{{auth()->user()->id}}"
+                                            data-myname="{{auth()->user()->name}}"
+                                            data-myemail="{{auth()->user()->email}}"
+                                            data-myusername="{{auth()->user()->username}}"
+                                            data-mycontact="{{auth()->user()->contact}}"
+                                            data-toggle="modal" data-target="#editProfile">Update Profile</button>
+                                        </div>
                                     </div>
+                                    @include('layouts.modal')
                                 </div>
                             </form>
                         </div>
@@ -228,3 +185,30 @@
 <script src="{{('js/js/custom.min.js')}}"></script>
 
 @endsection
+
+@push ('additionalJS')
+
+    @if (session('status'))
+        <script>
+        swal("Looking Good Mate!","{{session('status') }}",'success')
+        </script>
+    @endif
+
+<script>
+    $('#editProfile').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) 
+        var userId = button.data('id')
+        var name = button.data('myname') 
+        var email = button.data('myemail')
+        var username = button.data('myusername')
+        var contact = button.data('mycontact')
+        var modal = $(this)
+        modal.find('.modal-body #user_id').val(userId);
+        modal.find('.modal-body #name').val(name);
+        modal.find('.modal-body #email').val(email);
+        modal.find('.modal-body #username').val(username);
+        modal.find('.modal-body #phone').val(contact);
+    })
+</script>
+
+@endpush

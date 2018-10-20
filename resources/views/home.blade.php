@@ -349,16 +349,22 @@ var charts = {
             backgroundColor: 'rgb(255, 69, 0)',
             borderWidth: 0, 
         }
-        var absent = {
+        var absents = {
             label: 'Absent',
             data: response.absents,
             backgroundColor: 'rgb(255, 0, 0)',
             borderWidth: 0,
         }
+        var presents = {
+            label: 'Present',
+            data: response.presents,
+            backgroundColor: 'rgba(24, 130, 236, 1)',
+            borderWidth: 0,
+        }
 
         var weekData = {
             labels: subjects, //week days
-            datasets: [lates, absent] //must be an object of subjects with late, absent or present as its data
+            datasets: [presents, lates, absents] //must be an object of subjects with late, absent or present as its data
         };
 
         var chartOptions = {

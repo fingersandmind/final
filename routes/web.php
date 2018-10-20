@@ -22,8 +22,9 @@ Auth::routes();
 
 
 // Route::get('register', 'RegistrationController@create');
-Route::get('login', 'SessionsController@create')->name('login');
-Route::post('login', 'SessionsController@store');
+// Route::get('login', 'SessionsController@create')->name('login');
+// Route::post('login', 'SessionsController@store');
+// Route::get('logout', 'SessionsController@destroy');
 
 Route::get('attendance', 'ChartDataController@subjectData');
 Route::get('loadchart', 'ChartDataController@loadChart')->name('loadChart');
@@ -32,6 +33,9 @@ Route::get('loadchart', 'ChartDataController@loadChart')->name('loadChart');
 
 Route::get('subject', 'ChartDataController@getAllSubject');
 Route::get('months', 'ChartDataController@getAllAttendanceMonth');
+Route::get('maps', function(){
+    return view('maps');
+});
 
 
 
@@ -39,11 +43,10 @@ Route::get('months', 'ChartDataController@getAllAttendanceMonth');
 Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('profile','ProfileController@profile')->name('profile');
-    Route::post('profile', 'ProfileController@updateAvatar');
-    // Route::post('profile', 'ProfileController@updateProfile');
+    Route::post('profile', 'ProfileController@updateProfile');
+    Route::post('update-avatar', 'ProfileController@updateAvatar')->name('update-avatar');
 
     
-    Route::get('logout', 'SessionsController@destroy');
 
 
 
@@ -59,3 +62,6 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
     // Route::get('class',' ClassController@index');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

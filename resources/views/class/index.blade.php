@@ -26,6 +26,7 @@
                 <th>Description</th>
                 <th>Day</th>
                 <th>Room</th>
+                <th>Schedule</th>
                 <th>Time</th>
                 <th width="280px">Action</th>
             </tr>
@@ -36,15 +37,8 @@
                 <td>{{ $class->description }}</td>
                 <td>{{ $class->day }}</td>
                 <td>{{ $class->room }}</td>
-                <td>{{ $class->time }}</td>
-                {{-- <td>{{ $class->teacher->name}}</td> --}}
-                {{-- <td>
-                    @if(!empty($user->getRoleNames()))
-                    @foreach($user->getRoleNames() as $v)
-                        <label class="badge badge-success">{{ $v }}</label>
-                    @endforeach
-                    @endif
-                </td> --}}
+                <td>{{ $class->schedule }}</td>
+                <td>{{ $class->time_start }}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('class.show',$class->id) }}" title="View"><i class="fa fa-eye"></i></a>
                     @can('role-edit')

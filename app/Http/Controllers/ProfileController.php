@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use File;
 
 class ProfileController extends Controller
@@ -20,6 +21,7 @@ class ProfileController extends Controller
         ]);
  
         $user = auth()->user();
+        
         if(File::exists(storage_path('app/public/avatars/'.$user->avatar))){
             File::delete(storage_path('app/public/avatars/'.$user->avatar));
         }
@@ -30,17 +32,23 @@ class ProfileController extends Controller
         $user->avatar = $avatarName;
         $user->save();
         return back()
-            ->with('success','You have successfully upload image.');
+            ->with('status','You have successfully upload image.');
  
     }
+
     public function updateProfile(Request $request){
+        // dd($request->all());
+    $this->validate($request, [
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email,'.$request->user_id,
+        'username' => 'required|unique:users,username,'.$request->user_id
+    ]);
+        
+        $user = User::findOrFail($request->user_id);
+        
 
-        $user = auth()->user();
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->save();
+        $user->update($request->all());
         return back()
-            ->with('success', 'You have successfully updated your profile');
+            ->with('status', 'You have successfully updated your profile');
     }
 }

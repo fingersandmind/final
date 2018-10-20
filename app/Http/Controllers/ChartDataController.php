@@ -195,18 +195,20 @@ class ChartDataController extends Controller
         $subject_name_array = [];
         $lates_array = [];
         $absents_array = [];
+        $presents_array = [];
 
         if( !empty($classes) ){
             foreach( $classes as $class )
             {
                 $attendances = $class->attendances;
 
-                $time_start = new Carbon($class->schoolClass->time);
+                $time_start = new Carbon($class->schoolClass->time_start);
                 $subjects = $class->schoolClass->name;
 
                 array_push($subject_name_array, $subjects);
                 $attendance_arr = array();
 
+                $present = 0;
                 $late = 0;
                 $absent = 0;
 
@@ -221,12 +223,16 @@ class ChartDataController extends Controller
 
                     if($time_diff_in_hours < 1)
                     {
-                        if($time_diff_in_minutes > 5 AND $time_diff_in_minutes <= 15)
+                        if($time_diff_in_minutes < 5)
+                        {
+                            $present++;
+                            
+                        }
+                        elseif($time_diff_in_minutes > 5 AND $time_diff_in_minutes <= 15)
                         {
                             $late++;
-                        }
-                        elseif($time_diff_in_minutes > 15)
-                        {
+                            
+                        } else {
                             $absent++;
                         }
                     }else{
@@ -235,6 +241,7 @@ class ChartDataController extends Controller
                 }
                 array_push($lates_array, $late);
                 array_push($absents_array, $absent);
+                array_push($presents_array, $present);
             }
         }
         
@@ -242,7 +249,8 @@ class ChartDataController extends Controller
             'subjects' => $subject_name_array,
             'lates' => $lates_array,
             'absents' => $absents_array,
-            'max' => 10,
+            'presents' => $presents_array,
+            'max' => 20,
         );
         return $performance;
     }

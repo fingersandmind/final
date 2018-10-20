@@ -57,13 +57,6 @@
 
 {!! $data->render() !!}
 
-{{-- {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id], 
-        'style'=>'display:inline', 'class' => 'delete', 'method' => 'DELETE']) !!}
-            {!! Form::hidden('id', $user->id) !!}
-            {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 
-            'title' => 'Delete']) !!}
-            {!! Form::close() !!} --}}
-
 
 
 

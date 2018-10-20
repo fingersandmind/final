@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classes extends Model
 {
-    protected $fillable = ['body'];
+    protected $fillable = [
+        'name', 'description', 'day', 'schedule', 'time_start', 'room'
+    ];
 
     
 

@@ -51,6 +51,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'username' => 'required|unique:users',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
@@ -153,8 +154,6 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['status' => 'deleted'],200);
         
-        //return redirect()->route('users.index')
-                        //->with('success','User deleted successfully');
     }
     // public function destroy($id)
     // {

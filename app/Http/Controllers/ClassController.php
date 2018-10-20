@@ -54,20 +54,22 @@ class ClassController extends Controller
             'description' => 'required',
             'day' => 'required',
             'room' => 'required',
-            'time' => 'required'
+            'time_start' => 'required',
+            'schedule' => 'required'
         ]);
 
 
-        // $input = $request->all();
+        $input = $request->all();
 
-        // $class = Classes::create($input);
-        $class = new Classes;
-        $class->name = $request->input('name');
-        $class->description = $request->input('description');
-        $class->day = $request->input('day');
-        $class->room = $request->input('room');
-        $class->time = $request->input('time');
-        $class->save();
+        $class = Classes::create($input);
+
+        // $class = new Classes;
+        // $class->name = $request->input('name');
+        // $class->description = $request->input('description');
+        // $class->day = $request->input('day');
+        // $class->room = $request->input('room');
+        // $class->time = $request->input('time');
+        // $class->save();
         
         return redirect()->route('class.index')
                         ->with('success','Class created successfully');
