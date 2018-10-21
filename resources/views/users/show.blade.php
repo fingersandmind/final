@@ -12,25 +12,25 @@
         </div>
     </div>
 </div>
-
+<hr>
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Name:</strong>
-            {{ $user->name }}
+            <h3>{{ $user->name }}</h3>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Email:</strong>
-            {{ $user->email }}
+            <h3>{{ $user->email }}</h3>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Username:</strong>
-            {{ $user->username }}
+            <h3>{{ $user->username }}</h3>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">

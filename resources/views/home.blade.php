@@ -68,6 +68,15 @@
                             </div>
                             {{-- <div class="" id="sales-chart" style="height: 355px;"></div> --}}
                             <canvas id="subjectChart" width="50%" height="20"></canvas>
+                            <div class="container">
+                               <div class="col-md-12">
+                                   <div class="col-md-4">
+                                        <select id="dropdown" class="form-control" width="50%">
+                                            </select>
+                                   </div>
+                               </div>
+                                
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -290,47 +299,32 @@
 
     <script src="{{asset('vendor/Chart.min.js')}}"></script>
     {{-- <script src="{{asset('vendor/subjectsChart.js')}}"></script> --}}
+    {{-- Dropdown change event --}}
+
+    
 
     <script>
     ( function ( $ ) {
 
-var charts = {
+charts = {
     init: function () {
         // -- Set new default font family and font color to mimic Bootstrap's default styling
         Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#292b2c';
 
          this.ajaxGetPostMonthlyData();
-        // $.ajax({
-        //     url: "{{route('loadChart')}}",
-        //     type: 'get',
-        //     dataType: 'json',
-           
-        // })
-        // .done(function(data) {
-            
-        //     charts.createCompletedJobsChart();
-        // })
-        // .fail(function() {
-        //     console.log("error");
-        // })
-        // .always(function() {
-        //     console.log("complete");
-        // });
-
-        // charts.createCompletedJobsChart();
 
     },
 
     ajaxGetPostMonthlyData: function () {
-        var urlPath =  'http://localhost/capstonefinal/public/months';
+        var urlPath =  'http://localhost/capstonefinal/public/datas/10';
         var request = $.ajax( {
             method: 'GET',
             url: urlPath
         } );
 
         request.done( function ( response ) {
-            console.log( response );
+
             charts.createCompletedJobsChart( response );
         });
     },
@@ -398,6 +392,33 @@ charts.init();
 
 } )( jQuery );
     </script>
-    
 
+    <script>
+        $(document).ready(function() {
+            $(document).on('change', '#dropdown', function(event) {
+                event.preventDefault();
+                var id = $(this).val()
+
+                charts.ajaxGetPostMonthlyData();
+            });
+        });
+
+    </script>
+
+
+    {{-- Dropdown list of datas month --}}
+
+    <script>
+        $(document).ready(function(){
+            var $selectdropdown = $("#dropdown");
+            $.getJSON('{{route('months')}}', function (result){
+                $.each(result, function(index, val){
+                    $.each(val,function (j,k){
+                        $selectdropdown.append($("<option />").val(j).text(k));
+                    });
+                });
+            });
+        });
+    </script>
+    
 @endpush

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use File;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -41,13 +42,21 @@ class ProfileController extends Controller
     $this->validate($request, [
         'name' => 'required',
         'email' => 'required|email|unique:users,email,'.$request->user_id,
-        'username' => 'required|unique:users,username,'.$request->user_id
+        'username' => 'required|unique:users,username,'.$request->user_id,
+        'password' => 'same:confirm-password'
     ]);
         
         $user = User::findOrFail($request->user_id);
+
+        $input = $request->all();
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = array_except($input,array('password'));    
+        }
         
 
-        $user->update($request->all());
+        $user->update($input);
         return back()
             ->with('status', 'You have successfully updated your profile');
     }

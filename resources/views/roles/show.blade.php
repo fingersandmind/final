@@ -12,13 +12,14 @@
         </div>
     </div>
 </div>
+<hr>
 
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Name:</strong>
-            {{ $role->name }}
+            <h3>{{ $role->name }}</h3>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -33,10 +34,10 @@
         <br><br><br><hr>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             @can('role-delete')
-            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+            {{-- {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
                 {!! Form::hidden('id', $role->id) !!}
-                {!! Form::button('<i class="fa fa-trash"></i> Delete', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => 'Delete']) !!}
-            {!! Form::close() !!}
+                {!! Form::button('<i class="fa fa-trash"></i> Delete', ['class' => 'btn btn-danger delete', 'type' => 'button','id' => $role->id, 'title' => 'Delete']) !!}
+            {!! Form::close() !!} --}}
             @endcan
         </div>
     </div>

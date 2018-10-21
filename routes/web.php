@@ -26,13 +26,14 @@ Auth::routes();
 // Route::post('login', 'SessionsController@store');
 // Route::get('logout', 'SessionsController@destroy');
 
-Route::get('attendance', 'ChartDataController@subjectData');
 Route::get('loadchart', 'ChartDataController@loadChart')->name('loadChart');
 
+Route::get('datas/{month}', 'ChartDataController@teacherClasses')->name('datas');
+Route::get('months', 'ChartDataController@getAllAttendanceMonth')->name('months');
 
 
 Route::get('subject', 'ChartDataController@getAllSubject');
-Route::get('months', 'ChartDataController@getAllAttendanceMonth');
+
 Route::get('maps', function(){
     return view('maps');
 });
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
 
     Route::resource('roles','RoleController');
+    Route::post('roles/delete', 'RoleController@delete')->name('roles.delete');
     Route::resource('users','UserController');
     Route::post('users/delete','UserController@delete')->name('users.delete');
 

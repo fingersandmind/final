@@ -45,7 +45,6 @@
        <a class="btn btn-info" href="{{ route('users.show',$user->id) }}" title="View"><i class="fa fa-eye"></i></a>
        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}" title="Edit"><i class="fa fa-edit"></i></a>
 
-
     @csrf
     <button id ="{{$user->id}}" type="button" class="btn btn-danger delete" title="Delete"><i class="fa fa-trash"></i></button>
         

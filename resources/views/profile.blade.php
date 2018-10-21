@@ -207,7 +207,7 @@
         modal.find('.modal-body #name').val(name);
         modal.find('.modal-body #email').val(email);
         modal.find('.modal-body #username').val(username);
-        modal.find('.modal-body #phone').val(contact);
+        modal.find('.modal-body #contact').val(contact);
     })
 </script>
 

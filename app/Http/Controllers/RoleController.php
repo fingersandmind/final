@@ -140,11 +140,17 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function delete(Request $request)
     {
-        DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles.index')
-                        ->with('success','Role deleted successfully');
-                        
+        DB::table("roles")->where('id',$request->id)->delete();
+        return response()->json(['status' => 'deleted'],200);
     }
+    // public function destroy($id)
+    // {
+    //     DB::table("roles")->where('id',$id)->delete();
+    //     return redirect()->route('roles.index')
+    //                     ->with('success','Role deleted successfully');
+                        
+    // }
 }

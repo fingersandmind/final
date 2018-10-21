@@ -15,61 +15,40 @@ class ChartDataController extends Controller
 
     function getAllAttendanceMonth()
     {
+        $month_name_array = array();
         $month_array = array();
 
         $attendance = Attendance::get()->pluck('date');
+        $monthsx = auth()->user()->teacherClass()
+        ->with('attendances')
+        ->get();
 
-        $attendances = json_decode($attendance);
+        if( !empty($monthsx) )
+        {
+            foreach($monthsx as $month)
+            {
+                $attendance = $month->attendances;
 
-        if( !empty($attendances) ){
-            foreach( $attendances as $attendance ){
-                // $format = 'd/m/Y';
-                $dates = new Carbon($attendance->date);
-                $month_no = $dates->format('m');
-                $month_name = $dates->format('F');
-                // $date = $dates->toDateTimeString();
-
-                // $date = $attendance->date;
-                $month_array[$month_no] = $month_name;
+                if( !empty($attendance) ){
+                    foreach($attendance as $getDate)
+                    {
+                        $date = new Carbon($getDate->date);
+                        $month_no = $date->format('m');
+                        $month_name = $date->format('F');
+                        $month_array[$month_no] = $month_name;
+                    }
+                }
             }
-
         }
+        $months = array(
+            'months' => $month_array,
+        );
 
-        return $this->teacherClasses(10);
-        return $this->subjectData(10);
-        return $this->getAllAttendanceByMonth(10);
-
-        return $month_array;
+        return $months;
     }
-
-    function getAllAttendanceByMonth($month)
-    {
-        // $month = $this->getAllAttendanceMonth();
-
-        $attendances = Attendance::whereMonth('date', $month)->get();
-
-
-        // if( !empty($attendances) )
-        // {
-        //     foreach( $attendances as $attendance ){
-        //         // $dates = new Carbon($attendance->date);
-        //         $unformatted_time = new Carbon($attendance->time_in);
-        //         $timeIn = $unformatted_time->toTimeString();
-        //     }
-        // }
-
-        return $attendances;
-    }
-
 
     function getAllSubject()
     {
-
-        // $userId = auth()->user()->id; //getting the id of authenticated users.
-
-        // $user = User::find($userId); //passing the above id as parameters to get the data of the authenticated user.
-
-        //Using eloquent get the subjects of the current user to be passed in chart.
 
         $subjects = auth()->user()->subjects()->pluck('name'); 
 
@@ -80,106 +59,9 @@ class ChartDataController extends Controller
 
     public function loadChart()
     {
-        $attendance_arr = array();
-
-        $list_attendance = Attendance::whereMonth('date','11')
-        ->whereYear('date','2018')
-        ->with('attendances.subjClass')
-        ->get();
-
-        foreach($list_attendance as $attendance){
-            
-        }
-
-        // return json_encode($attendance_arr);
-        $list = json_decode( $list_attendance );
-
-        return $list;
-
-
-       // return AttendanceResource::collection($list_attendance);
-
-    }
-    function subjectData($month){
-        $json = "";
         
+        return $this->teacherClasses(10);
 
-        $teacherClasses = DB::table('users')
-                            ->join('teacher_class', 'users.id', "=", 'teacher_class.user_id')
-                            ->where('users.id', auth()->user()->id)
-                            ->get();
-
-        $subs = [];
-
-        
-
-        foreach ($teacherClasses as $classes) {
-            $rawData = DB::table('attendances')
-                ->join('teacher_class', 'teacher_class.id', "=", 'attendances.teacher_class_id')
-                ->join('classes', 'classes.id', "=", 'teacher_class.classes_id')
-                ->where('teacher_class.classes_id', $classes->classes_id)
-                ->whereMonth('date', $month)
-                ->get();
-                // ->pluck('classes','name'); 
-
-            $finalData =[];
-
-            $lates_arr = array();
-            $lates = 0;
-
-            foreach($rawData as $items){        
-                $date = $items->date;
-                $classTime = new Carbon($items->time);
-                $time_in = new Carbon($items->time_in);
-                $timeIn = $time_in->toTimeString();
-                $time_out = $items->time_out;
-                $subject = $items->name;
-
-                
-                $absent = 0;
-
-                
-
-                $diff_in_minutes = $classTime->diffInMinutes($time_in);
-                if( $diff_in_minutes = 5 || $diff_in_minutes <= 14  )
-                {
-                    $lates++;
-                }
-                
-
-                array_push($lates_arr, $lates);
-
-
-
-
-                array_push($finalData, [
-                    'subject' => $subject,
-                    'timeIn' => $timeIn,
-                    'timeOut' => $time_out,
-                    ]);
-            }
-            // return $lates;
-            // return $rawData;
-            array_push($subs, $finalData);
-
-        }
-       
-        json_encode($subs, JSON_FORCE_OBJECT);
-
-        // $teacher_data_array = array(
-        //     'subjects' => $subs,
-        //     'lates' => 10,
-        //     'max' => 10,
-        // );
-
-        // return $teacher_data_array;
-
-        // return $teacherClasses;
-
-        // return $lates;
-
-        // return $lates_arr;
-        return $subs;
     }
 
     public function teacherClasses($month)
