@@ -27,18 +27,18 @@
                     </div>
 
                     <div class="md-form mb-5">
-                        <i class="fa fa-tag prefix grey-text"></i>
-                        <label data-error="wrong" data-success="right" for="form32">Password</label>
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <label data-error="wrong" data-success="right" for="form32">New Password</label>
                         <input type="password" name="password" id="password" class="form-control validate">
                     </div>
                     <div class="md-form mb-5">
-                        <i class="fa fa-tag prefix grey-text"></i>
+                        <i class="fa fa-lock prefix gray-text"></i>
                         <label data-error="wrong" data-success="right" for="form32">Confirm Password</label>
                         <input type="password" name="confirm-password" id="confirm-password" class="form-control validate">
                     </div>
 
                     <div class="md-form mb-5">
-                            <i class="fa fa-tag prefix grey-text"></i>
+                            <i class="fa fa-phone prefix grey-text"></i>
                             <label data-error="wrong" data-success="right" for="form32">Phone</label>
                             <input type="text" name="contact" id="contact" class="form-control validate">
                     </div>

@@ -34,7 +34,7 @@
                     <div class="col-md-5 align-self-center">
                         <h3 class="text-themecolor">Manage Roles</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('home')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                             <li class="breadcrumb-item active">Roles</li>
                         </ol>
                     </div>

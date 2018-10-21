@@ -36,7 +36,7 @@
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Profile</h3>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                         <li class="breadcrumb-item active">Profile</li>
                     </ol>
                 </div>
@@ -55,7 +55,13 @@
                         <div class="card-body">
                             <center class="m-t-30"> <img src="{{asset("storage/avatars/".$user->avatar)}}" class="img-circle" width="150" />
                                 <h4 class="card-title m-t-10">{{Auth::user()->name}}</h4>
-                                <h6 class="card-subtitle">Accounts Manager Amix corp</h6>
+                                <h6 class="card-subtitle">
+                                    @if(!empty($user->getRoleNames()))
+                                        @foreach($user->getRoleNames() as $v)
+                                            <label class="badge badge-success">{{ $v }}</label>
+                                        @endforeach
+                                    @endif
+                                </h6>
                                 <div class="row text-center justify-content-md-center">
                                     <div class="col-4"><a href="javascript:void(0)" class="link">
                                         <i class="icon-people"></i> <font class="font-medium">254</font></a></div>

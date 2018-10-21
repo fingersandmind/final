@@ -42,14 +42,8 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Time:</strong>
+            <strong>Schedule:</strong>
             <h3><label class="label label-info">{{ $class->schedule }}</label></h3>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Time:</strong>
-            <h3><label class="label label-info">{{ $class->time_start }}</label></h3>
         </div>
     </div>
 </div>

@@ -27,7 +27,6 @@
                 <th>Day</th>
                 <th>Room</th>
                 <th>Schedule</th>
-                <th>Time</th>
                 <th width="280px">Action</th>
             </tr>
             @foreach ($data as $key => $class)
@@ -38,7 +37,6 @@
                 <td>{{ $class->day }}</td>
                 <td>{{ $class->room }}</td>
                 <td>{{ $class->schedule }}</td>
-                <td>{{ $class->time_start }}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('class.show',$class->id) }}" title="View"><i class="fa fa-eye"></i></a>
                     @can('role-edit')

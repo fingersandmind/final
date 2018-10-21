@@ -49,7 +49,8 @@ class ProfileController extends Controller
         $user = User::findOrFail($request->user_id);
 
         $input = $request->all();
-        if(!empty($input['password'])){ 
+
+        if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{
             $input = array_except($input,array('password'));    
