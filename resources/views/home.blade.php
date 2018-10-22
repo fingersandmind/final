@@ -72,17 +72,17 @@
                                <div class="col-md-12">
                                    <div class="col-md-4">
                                         <select id="dropdown" class="form-control" width="50%">
-                                            </select>
+                                            <option value="0">Select Month</option>
+                                        </select>
                                    </div>
                                </div>
                                 
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
-
             </div>
+        </div>
 
 @endsection
 
@@ -109,12 +109,15 @@ charts = {
         Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#292b2c';
 
-         this.ajaxGetPostMonthlyData();
+         this.ajaxGetAttendanceMonthlyData();
+        // this.createCompletedJobsChart();
 
     },
 
-    ajaxGetPostMonthlyData: function () {
-        var urlPath =  'http://localhost/capstonefinal/public/datas/10';
+    ajaxGetAttendanceMonthlyData: function () { 
+
+        var id = 0 //if ! empty get first value from the dropdown else 0;
+        var urlPath =  'http://localhost/capstonefinal/public/datas/'+id;
         var request = $.ajax( {
             method: 'GET',
             url: urlPath
@@ -192,14 +195,21 @@ charts.init();
 
     <script>
         $(document).ready(function() {
+
             $(document).on('change', '#dropdown', function(event) {
                 event.preventDefault();
-                var id = $(this).val()
+                var id = $(this).val();
+                var urlPath =  'http://localhost/capstonefinal/public/datas/' + id;
+                var request = $.ajax( {
+                    method: 'GET',
+                    url: urlPath
+                });
 
-                charts.ajaxGetPostMonthlyData();
+                request.done( function ( response ) {
+                    charts.createCompletedJobsChart( response );
+                });
             });
         });
-
     </script>
 
 

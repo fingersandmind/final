@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\User;
 use File;
 use Hash;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
     public function profile(){
         $user = auth()->user();
+        $member = new Carbon($user->created_at);
+        $memberSince = $member->toFormattedDateString();
 
-        return view('profile', compact('user', $user));
+        return view('profile', compact('user', 'memberSince'));
     }
 
     public function updateAvatar(Request $request){

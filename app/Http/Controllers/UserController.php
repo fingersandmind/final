@@ -13,10 +13,13 @@ use Hash;
 
 class UserController extends Controller
 {
+    
     function __construct()
     {
          $this->middleware('permission:role-list');
     }
+
+
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);

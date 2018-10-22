@@ -63,10 +63,9 @@
                                     @endif
                                 </h6>
                                 <div class="row text-center justify-content-md-center">
-                                    <div class="col-4"><a href="javascript:void(0)" class="link">
-                                        <i class="icon-people"></i> <font class="font-medium">254</font></a></div>
-                                    <div class="col-4"><a href="javascript:void(0)" class="link">
-                                        <i class="icon-picture"></i> <font class="font-medium">54</font></a></div>
+                                    <div class="col-8">
+                                        <small><strong>Member Since:</strong> {{$memberSince}}</small>
+                                    </div>
                                 </div>
                                 <div class="row justify-content-center">
                                     <form action="update-avatar" method="post" enctype="multipart/form-data">

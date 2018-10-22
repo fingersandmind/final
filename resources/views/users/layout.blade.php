@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <!-- Column -->
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex m-b-30 no-block">
@@ -80,7 +80,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Sales Chart -->
@@ -90,91 +90,13 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div>
-                                        <h5 class="card-title">Projects of the Month</h5>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <select class="custom-select b-0">
-                                            <option selected="">January</option>
-                                            <option value="1">February</option>
-                                            <option value="2">March</option>
-                                            <option value="3">April</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="table-responsive m-t-20 no-wrap">
-                                    <table class="table vm no-th-brd pro-of-month">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Assigned</th>
-                                                <th>Name</th>
-                                                <th>Budget</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="width:50px;"><span class="round">S</span></td>
-                                                <td>
-                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small></td>
-                                                <td>Elite Admin</td>
-                                                <td>$3.9K</td>
-                                            </tr>
-                                            <tr class="active">
-                                                <td><span class="round"><img src="{{asset('assets/images/users/2.jpg')}}" alt="user" width="50"></span></td>
-                                                <td>
-                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small></td>
-                                                <td>Real Homes</td>
-                                                <td>$23.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-success">B</span></td>
-                                                <td>
-                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small></td>
-                                                <td>MedicalPro Theme</td>
-                                                <td>$12.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-primary">N</span></td>
-                                                <td>
-                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small></td>
-                                                <td>Elite Admin</td>
-                                                <td>$10.9K</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-warning">M</span></td>
-                                                <td>
-                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small></td>
-                                                <td>Helping Hands</td>
-                                                <td>$12.9K</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    @yield('dashboard')
+
                     <!-- Column -->
                     <!-- Column -->
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="up-img" style="background-image:url({{asset('assets/images/big/img1.jpg')}})"></div>
-                            <div class="card-body">
-                                <h5 class=" card-title">Verse of the day</h5>
-                                <script src="http://www.verse-a-day.com/js/NIV.js"></script>
-                                <div class="d-flex m-t-20">
-                                    <a class="link" href="https://www.biblestudytools.com/bible-verse-of-the-day/" target="_blank">Read more</a>
-                                    <div class="ml-auto align-self-center">
-                                        <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart-o"></i></a>
-                                        <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-share-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @yield('votd')
+
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Projects of the Month -->

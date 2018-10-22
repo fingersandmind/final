@@ -50,7 +50,6 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     
 
 
-
     Route::resource('roles','RoleController');
     Route::post('roles/delete', 'RoleController@delete')->name('roles.delete');
     Route::resource('users','UserController');

@@ -14,7 +14,7 @@
                 @can('role-list')
                 <li> 
                     <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false">
-                        <i class="fa fa-user"></i><span class="hide-menu">Manage Teachers</span>
+                        <i class="fa fa-group"></i><span class="hide-menu">Manage Teachers</span>
                     </a>
                 </li>
 
