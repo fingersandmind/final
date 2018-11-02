@@ -62,10 +62,25 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Time Start:</strong>
+            <strong>Time Start: </strong>
             {!! Form::text('time_start',null , array('placeholder' => 'Time','class' => 'form-control')) !!}
         </div>
     </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>College: </strong>
+        </div>
+        <div class="input-group mb-3"><br>
+                {{-- @foreach($college as $key => $value) --}}
+                    {{ Form::select('clg_no', $colleges, null, array('class' => 'custom-select'))}}
+                    {{-- {{  Form::label($colleges->name, ucFirst($colleges->name)) }} --}}
+                <br>
+                {{-- @endforeach --}}
+        </div>
+    </div>
+
+
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

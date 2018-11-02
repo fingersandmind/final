@@ -40,4 +40,9 @@ class User extends Authenticatable
         return $this->hasMany(TeacherClass::class, 'user_id');
     }
 
+    public static function exists($tch_num) {
+        $u = User::where('tch_num', $tch_num);
+        return $u->exists();
+    }
+
 }

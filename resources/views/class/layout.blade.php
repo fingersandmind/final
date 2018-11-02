@@ -35,10 +35,15 @@
                         <h3 class="text-themecolor">Manage Classes</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                            <li class="breadcrumb-item active">Classes</li>
+                            @yield('breadcrumbs')
                         </ol>
                     </div>
                 </div>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
@@ -245,7 +250,7 @@
         
     </div>
 
-    <script src="{{asset('assets/node_modules/jquery/jquery.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/node_modules/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap popper Core JavaScript -->
     <script src="{{asset('assets/node_modules/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{asset('assets/node_modules/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -267,7 +272,10 @@
     <script src="{{asset('assets/node_modules/d3/d3.min.js')}}"></script>
     <script src="{{asset('assets/node_modules/c3-master/c3.min.js')}}"></script>
     <!-- Chart JS -->
-    <script src="{{asset('js/js/dashboard1.js')}}"></script>
+    <script src="{{asset('js/js/dashboard1.js')}}"></script> --}}
+
+    @include('javascripts')
+
 
 </body>
 

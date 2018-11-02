@@ -7,6 +7,7 @@ use App\User;
 use App\Classes;
 use App\TeacherClass;
 use App\Attendance;
+use App\Semester;
 use Carbon\Carbon;
 use DB;
 
@@ -57,22 +58,18 @@ class ChartDataController extends Controller
     }
 
 
-    public function loadChart()
-    {
-        
-        return $this->teacherClasses(10);
-
-    }
-
     public function teacherClasses($month)
     {
+        $sem = Semester::where('active', 1)->firstOrFail();
         
-        $classes = auth()->user()
-        ->teacherClass()
+        $classes = $sem
+        ->classes()
         ->with(['schoolClass', 'attendances' => function($query) use ($month){
             $query->whereMonth('date', $month);
         }])
+        ->where('user_id', auth()->user()->id)
         ->get();
+
 
         $subject_name_array = [];
         $lates_array = [];

@@ -32,9 +32,14 @@
                 </li>
 
                 <li> 
-                    <a class="waves-effect waves-dark" href="{{ route('class.index') }}" aria-expanded="false">
-                        <i class="fa fa-table"></i><span class="hide-menu">Classes</span>
-                    </a>
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" 
+                        aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-table"></i><span class="hide-menu">Classes</span>
+                    <span class="hidden-md-down"></span></a>
+                    <div class="dropdown-menu dropdown-menu-right animated">
+                        <a class="dropdown-menu-item" href="{{route('class.index')}}">Class List</a>
+                        <a class="dropdown-menu-item" href="{{route('myclass')}}">My Class</a>
+                    </div>
                 </li>
 
                 <li> 
@@ -43,7 +48,7 @@
                     </a>
                 </li>
 
-                <li> 
+                {{-- <li> 
                     <a class="waves-effect waves-dark" href="icon-fontawesome.html" aria-expanded="false">
                         <i class="fa fa-smile-o"></i><span class="hide-menu">Icons</span>
                     </a>
@@ -59,7 +64,7 @@
                     <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false">
                         <i class="fa fa-question-circle"></i><span class="hide-menu">404</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

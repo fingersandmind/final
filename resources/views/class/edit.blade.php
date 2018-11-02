@@ -1,5 +1,10 @@
 @extends('class.layout')
 
+@section('breadcrumbs')
+<li class="breadcrumb-item active"><a href="{{route('class.index')}}">Classes</a></li>
+    <li class="breadcrumb-item active">Edit</li>
+@endsection
+
 
 @section('content')
 <div class="row">
@@ -55,9 +60,24 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Time:</strong>
-            {!! Form::text('time', null, array('placeholder' => 'Time','class' => 'form-control')) !!}
+            {!! Form::text('schedule', null, array('placeholder' => 'Time','class' => 'form-control')) !!}
         </div>
     </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>College</strong>
+        </div>
+        <div class="input-group mb-3"><br>
+                {{-- @foreach($college as $key => $value) --}}
+                    {{ Form::select('clg_no', $colleges, null, array('class' => 'custom-select'))}}
+                    {{-- {{  Form::label($colleges->name, ucFirst($colleges->name)) }} --}}
+                <br>
+                {{-- @endforeach --}}
+        </div>
+    </div>
+
+
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -66,3 +86,4 @@
 
 
 @endsection
+

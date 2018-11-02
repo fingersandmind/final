@@ -1,15 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 Route::get('/', function() {
     return view('welcome');
 });
@@ -17,22 +8,14 @@ Auth::routes();
 
 
 
-
-
-
-
-// Route::get('register', 'RegistrationController@create');
-// Route::get('login', 'SessionsController@create')->name('login');
-// Route::post('login', 'SessionsController@store');
-// Route::get('logout', 'SessionsController@destroy');
-
-Route::get('loadchart', 'ChartDataController@loadChart')->name('loadChart');
-
 Route::get('datas/{month}', 'ChartDataController@teacherClasses')->name('datas');
 Route::get('months', 'ChartDataController@getAllAttendanceMonth')->name('months');
 
 
-Route::get('subject', 'ChartDataController@getAllSubject');
+
+
+
+
 
 Route::get('maps', function(){
     return view('maps');
@@ -56,13 +39,16 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::post('users/delete','UserController@delete')->name('users.delete');
 
     Route::resource('class','ClassController');
+    Route::post('class/delete','ClassController@delete')->name('class.delete');
+    
 
-    Route::get('profile/schedule', function(){
-        return view('schedules.index');
-    });
+    // Route::resource('my-class', 'TeacherClassController')->name('myclass');
+    Route::get('myclass', 'TeacherClassController@index')->name('myclass');
 
-    // Route::get('class',' ClassController@index');
+    Route::get('/download/teachers', 'AdminController@downloadTeachers')->name('loadTeacher');
+
+    Route::get('/load/subject', 'ClassController@loadClass')->name('load');
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

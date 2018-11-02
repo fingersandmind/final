@@ -60,7 +60,7 @@ body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
   overflow-x: hidden;
-  color: #67757c;
+  color: #311b92;
   font-weight: 300;
   font-size: 14px; }
 
@@ -460,13 +460,13 @@ html body .text-dark {
   color: #67757c; }
 
 html body .text-themecolor {
-  color: #20aee3; }
+  color: #42a5f5; }
 
 /*******************
 Background Colors
 *******************/
 .bg-primary {
-  background-color: #6772e5 !important; }
+  background-color: #42a5f5; }
 
 .bg-success {
   background-color: #24d2b5 !important; }
@@ -780,12 +780,15 @@ use profile section
 /*******************
 sidebar navigation
 ******************/
+#sidebar-wrapper {
+  
+  background: #ffe0b2;
+}
 .scroll-sidebar {
   height: 100%; }
   .scroll-sidebar.ps .ps__scrollbar-y-rail {
     left: 2px;
     right: auto;
-    background: none;
     width: 6px;
     /* If using `left`, there shouldn't be a `right`. */ }
 

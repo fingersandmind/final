@@ -61,7 +61,7 @@
                                 <div class="ml-auto">
                                     <ul class="list-inline text-center font-12">
                                         <li><i class="fa fa-circle text-danger"></i>Absent</li>
-                                        <li><i class="fa fa-circle text-primary"></i>Absent</li>
+                                        <li><i class="fa fa-circle text-primary"></i>Late</li>
                                         <li><i class="fa fa-circle text-success"></i>Present</li>
                                     </ul>
                                 </div>
@@ -75,8 +75,7 @@
                                             <option value="0">Select Month</option>
                                         </select>
                                    </div>
-                               </div>
-                                
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +139,7 @@ charts = {
         var lates = {
             label: 'Lates',
             data: response.lates, //data of each subj represents late
-            backgroundColor: 'rgb(255, 69, 0)',
+            backgroundColor: 'rgb(255, 255, 0)',
             borderWidth: 0, 
         }
         var absents = {
@@ -152,7 +151,7 @@ charts = {
         var presents = {
             label: 'Present',
             data: response.presents,
-            backgroundColor: 'rgba(24, 130, 236, 1)',
+            backgroundColor: 'rgb(0, 255, 0)',
             borderWidth: 0,
         }
 

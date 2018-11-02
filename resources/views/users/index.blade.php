@@ -8,7 +8,8 @@
             <h2>Teachers Management</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+            {{-- <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a> --}}
+            <a class="btn btn-success" href="{{ route('loadTeacher') }}">Load Teacher</a>
         </div>
     </div>
 </div>
@@ -30,9 +31,12 @@
  </tr>
  @foreach ($data as $key => $user)
   <tr>
-    <td>{{ $user->name }}</td>
-    <td>{{ $user->email }}</td>
+    
+    <td><strong>{{ $user->name }}</strong></td>
+    <td><strong>{{ $user->email }}</strong></td>
+    
     <td>
+
       @if(!empty($user->getRoleNames()))
         @foreach($user->getRoleNames() as $v)
            <label class="badge badge-success">{{ $v }}</label>
@@ -59,9 +63,8 @@
 
 
 @section('dashboard')
-
     <div class="col-lg-8">
-        <div class="card">
+        {{-- <div class="card">
             <div class="card-body">
                 <div class="d-flex">
                     <div>
@@ -83,7 +86,7 @@
                             <tr class="active">
                                 <td><span class="round"><img src="{{asset("storage/avatars/".$user->avatar)}}" alt="user" width="50"></span></td>
                                 <td>
-                                    <h6>{{$user->name}}</h6>
+                                    <a href="{{ route('home') }}">{{$user->name}}</a>
                                 </td>
                                 <td>
                                     @if(!empty($user->getRoleNames()))
@@ -93,19 +96,22 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}" title="View">
+                                    <a class="btn btn-info" href="{{ route('home') }}" title="View">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </td>
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        {!! $data->render() !!} --}}
     </div>
-
+    
+    
 @endsection
 
 @section('votd')
@@ -129,6 +135,11 @@
 
 
 @push('additionalJS')
+    @if (session('status')) 
+        <script>
+        swal("Looking Good Mate!","{{session('status') }}",'success')
+        </script>
+    @endif
 
 <script>
 $(document).ready(function() {

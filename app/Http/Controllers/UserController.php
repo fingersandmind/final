@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Charts;
 use File;
 use DB;
 use Hash;
@@ -22,7 +23,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = User::orderBy('name','ASC')->paginate(5);
         $user = auth()->user();
         
         return view('users.index',compact('data', 'user'))
@@ -82,6 +83,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        
         return view('users.show',compact('user'));
     }
 
@@ -115,11 +117,13 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
+            'username' => 'required|unique:users,username,'.$id,
             'roles' => 'required'
         ]);
 
 
         $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
 
 
         $user = User::find($id);
@@ -131,7 +135,7 @@ class UserController extends Controller
 
 
         return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+                        ->with('status','User updated successfully');
     }
 
 
@@ -162,4 +166,5 @@ class UserController extends Controller
     //     return redirect()->route('users.index')
     //                     ->with('success','User deleted successfully');
     // }
+    
 }

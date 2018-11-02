@@ -34,6 +34,7 @@
                     <span class="hidden-md-down">{{auth()->user()->name}}&nbsp;</span> </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
                         <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
+                        <a class="dropdown-item" href="{{url('my-class')}}">My Class</a>
                         <a class="dropdown-item" href="{{route('home')}}">Dashboard</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
